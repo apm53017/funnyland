@@ -1,0 +1,12 @@
+<h1>User detail</h1>
+
+<div>
+  <%= image_tag @user.get_profile_image(80,80) %>
+  <p><%= @user.name %></p>
+  <br>
+  <% if @user == current_user %>
+    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-outline-success" %>
+  <% end %>
+</div>
+<br>
+<%= link_to "Back", users_path %>

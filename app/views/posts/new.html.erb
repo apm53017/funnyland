@@ -1,0 +1,28 @@
+<h1>New Post</h1>
+
+<%= render 'layouts/error_messages', resource: @post %>
+
+<%= form_with model: @post do |f| %>
+  <p>スポット名</p>
+  <%= f.text_field :title %>
+  <p>スポット詳細</p>
+  <%= f.text_area :body %>
+  <p>住所</p>
+  <%= f.text_area :address %>
+  <p>電話番号</p>
+  <%= f.text_field :telephone_number %>
+  <p>営業時間</p>
+  <%= f.text_area :opening_times %>
+  <p>定休日</p>
+  <%= f.text_area :closed_day %>
+  <p>緯度</p>
+  <%= f.text_field :latitude %>
+  <p>経度</p>
+  <%= f.text_field :longitude %>
+  <p>画像</p>
+  <%= f.file_field :post_image, accept: "image/*" %><br>
+  <br>
+  <%= f.submit '投稿', class: "btn btn-outline-success" %>
+<% end %>
+<br>
+<%= link_to "Back", posts_path %>

@@ -1,0 +1,36 @@
+<h1>Mypage</h1>
+<br>
+<div>
+  <%= image_tag @user.get_profile_image(80,80) %>
+  <h3><%= @user.name %></h3>
+</div>
+<%= link_to edit_user_path(@user.id) do %>
+  <button type="button"  class="btn btn-outline-success">
+    <i class="fa-solid fa-user-gear"> 編集</i>
+  </button>
+<% end %>
+
+<br>
+  <h3>Posts</h3>
+<table>
+  <thead>
+    <th></th>
+    <th>スポット名</th>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <%= link_to post_path(post.id) do %>
+            <%= image_tag post.get_post_image(100,100) %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to post_path(post.id) do %>
+            <%= post.title %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
