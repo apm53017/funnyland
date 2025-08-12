@@ -76,10 +76,12 @@ ActiveRecord::Schema.define(version: 2025_08_11_040118) do
   create_table "reviews", force: :cascade do |t|
     t.integer "post_id", null: false
     t.integer "user_id", null: false
-    t.integer "review", null: false
+    t.integer "review", default: 0, null: false
     t.string "comment"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_reviews_on_post_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "tags", force: :cascade do |t|
