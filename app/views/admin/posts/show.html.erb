@@ -1,0 +1,28 @@
+<h1>Post detail</h1>
+
+<div>
+  <%= image_tag @post.get_post_image(150,150) %>
+  <ul>
+    <li>スポット名：
+    <%= @post.title %></li>
+    <li>詳細：
+    <%= @post.body %></li>
+    <li>住所：
+    <%= @post.address %></li>
+    <li>電話番号：
+    <%= @post.telephone_number %></li>
+    <li>営業時間：
+    <%= @post.opening_times %></li>
+    <li>定休日：
+    <%= @post.closed_day %></li>
+    <li>緯度：
+    <%= @post.latitude %></li>
+    <li>経度：
+    <%= @post.longitude %></li>
+  </ul>
+  <br>
+  <%= link_to "Destroy", admin_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+</div>
+
+<br>
+<%= link_to "Back", admin_posts_path %>

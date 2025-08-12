@@ -1,0 +1,20 @@
+<table>
+  <tbody>
+    <% post.reviews.each do |review| %>
+    <tr>
+      <td>
+        <%= link_to user_path(review.user) do %>
+          <%= image_tag review.user.get_profile_image(80,80) %><br>
+          <%= review.user.name %>
+        <% end %>
+      </td>
+      <td><%= review.comment %></td>
+      <td>
+        <% if review.user == current_user %>
+          <%= link_to "Destroy", post_review_path(post, review), method: :delete, class: "btn btn-danger" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

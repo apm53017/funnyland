@@ -1,0 +1,21 @@
+<% if @model == 'user' %>
+	<h3>Users search for "<%= @content %>"</h3>
+  <% @records.each do |user| %>
+    <p><%= link_to user_path(user.id) do %>
+      <%= image_tag user.get_profile_image(80,80) %>
+    <% end %>
+    <%= link_to user_path(user.id) do %>
+      <%= user.name %>
+    <% end %></p>
+  <% end %>
+<% elsif @model == 'post' %>
+	<h3>Posts search for "<%= @content %>"</h3>
+  <% @records.each do |post| %>
+    <p><%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_post_image(80,80) %>
+    <% end %>
+    <%= link_to post_path(post.id) do %>
+      <%= post.title %>
+    <% end %></p>
+  <% end %>
+<% end %>

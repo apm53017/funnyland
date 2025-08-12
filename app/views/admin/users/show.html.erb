@@ -1,0 +1,11 @@
+<h1>User detail</h1>
+
+<div>
+  <%= image_tag @user.get_profile_image(80,80) %>
+  <p><%= @user.name %></p>
+  <p><%= @user.email %></p>
+  <br>
+  <%= link_to 'Destroy', admin_user_path(@user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger" %>
+</div>
+<br>
+<%= link_to "Back", admin_users_path %>

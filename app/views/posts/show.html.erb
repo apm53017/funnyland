@@ -23,6 +23,12 @@
   <% if @post.user == current_user %>
     <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-success" %>
   <% end %>
+
+  <%= render "reviews/index", post: @post %>
+  <%= render "reviews/form", post: @post, review: @review %>
+
 </div>
+
+
 <br>
 <%= link_to "Back", posts_path %>
