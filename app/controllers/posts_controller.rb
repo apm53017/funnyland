@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @post = current_user
+    #@post = current_user
   end
 
   def show
@@ -59,7 +60,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, :address, :telephone_number, :opening_times, :closed_day, :latitude, :longitude, :post_image)
+    params.require(:post).permit(:title, :body, :address, :telephone_number, :opening_times, :closed_day, :post_image, tag_ids: [])
   end
 
   def ensure_correct_user

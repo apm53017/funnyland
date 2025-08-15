@@ -7,3 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(email: 'admin@example.com', password: 'password')
+
+tag_names = %w(
+  テスト
+  テストA
+  テストB
+)
+
+# tag_names.each { |name| Tag.create!(tag_name: name) }

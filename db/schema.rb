@@ -63,14 +63,16 @@ ActiveRecord::Schema.define(version: 2025_08_11_040118) do
     t.integer "user_id", null: false
     t.string "title", null: false
     t.text "body", null: false
-    t.string "address", null: false
+    t.string "address", default: "", null: false
     t.string "telephone_number", null: false
     t.string "opening_times", null: false
     t.string "closed_day", null: false
-    t.float "latitude", null: false
-    t.float "longitude", null: false
+    t.float "latitude", default: 0.0, null: false
+    t.float "longitude", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "tag_id"
+    t.integer "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007f27391c2408>"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -86,6 +88,7 @@ ActiveRecord::Schema.define(version: 2025_08_11_040118) do
 
   create_table "tags", force: :cascade do |t|
     t.string "tag_name", null: false
+    t.string "icon", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

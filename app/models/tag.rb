@@ -1,8 +1,14 @@
 class Tag < ApplicationRecord
 
-  has_many :post_tags, dependent: :destroy
+  has_many :post_tags, dependent: :destroy, foreign_key: 'tag_id'
+  has_many :posts, through: :post_tags
+
+  validates :tag_name, presence: true
+  validates :icon, presence: true
 
   has_one_attached :tag_image
+
+  scope :merge_books, -> (tags){ }
 
   def get_tag_image(width, height)
     unless tag_image.attached?

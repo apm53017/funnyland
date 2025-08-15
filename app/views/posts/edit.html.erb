@@ -21,8 +21,13 @@
     <p>経度</p>
     <%= f.text_field :longitude %>
     <p>画像</p>
-    <%= f.file_field :post_image, accept: "image/*" %><br>
-    <br>
+    <%= f.file_field :post_image, accept: "image/*" %>
+
+    <div class="mb-3">
+      <p>タグを選択</p>
+      <%= f.collection_select :tag_id, Tag.all, :id, :tag_name, prompt: "タグを選んでください", class: "form-select" %>
+    </div>
+
     <%= f.submit "Update Post", class: "btn btn-outline-success" %>
   <% end %>
     <br>

@@ -18,4 +18,14 @@
       <%= post.title %>
     <% end %></p>
   <% end %>
+<% elsif !@model.present? && @tag_id.present? %>
+	<h3>Posts search for "<%= @tag.tag_name %> tag"</h3>
+  <% @records.each do |post| %>
+    <p><%= link_to post_path(post.id) do %>
+      <%= image_tag post.get_post_image(80,80) %>
+    <% end %>
+    <%= link_to post_path(post.id) do %>
+      <%= post.title %>
+    <% end %></p>
+  <% end %>
 <% end %>

@@ -7,6 +7,7 @@
   <%= f.text_field :title %>
   <p>スポット詳細</p>
   <%= f.text_area :body %>
+  <%= text_field_tag :zipcode, nil, class: "form-control", placeholder: "郵便番号" %>
   <p>住所</p>
   <%= f.text_area :address %>
   <p>電話番号</p>
@@ -15,14 +16,19 @@
   <%= f.text_area :opening_times %>
   <p>定休日</p>
   <%= f.text_area :closed_day %>
-  <p>緯度</p>
-  <%= f.text_field :latitude %>
-  <p>経度</p>
-  <%= f.text_field :longitude %>
   <p>画像</p>
-  <%= f.file_field :post_image, accept: "image/*" %><br>
-  <br>
+  <%= f.file_field :post_image, accept: "image/*" %>
+
+  <div class="mb-3">
+    <p>タグを選択</p>
+    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name do |b| %>
+      <%== b.label { b.check_box + " #{b.text}" } %><br>
+    <% end %>
+  </div>
+
   <%= f.submit '投稿', class: "btn btn-outline-success" %>
 <% end %>
 <br>
 <%= link_to "Back", posts_path %>
+
+<%= javascript_pack_tag "jpostal",  'data-turbolinks-track': 'reload' %>

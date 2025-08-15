@@ -1,8 +1,10 @@
 class Post < ApplicationRecord
   belongs_to :user
+  #belongs_to :tag
 
   has_many :reviews, dependent: :destroy
   has_many :post_tags, dependent: :destroy
+  has_many :tags, through: :post_tags
 
   has_one_attached :post_image
   has_one_attached :profile_image
@@ -13,9 +15,12 @@ class Post < ApplicationRecord
   validates :telephone_number, presence: true
   validates :opening_times, presence: true
   validates :closed_day, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
+  #validates :latitude, presence: true
+  #validates :longitude, presence: true
   validates :post_image, presence: true
+
+  geocoded_by :address
+  after_validation :geocode
 
   def get_post_image(width, height)
     unless post_image.attached?

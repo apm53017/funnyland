@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     resources :users, only: [:index, :show, :destroy]
     resources :posts, only: [:index, :show, :destroy]
+    resources :tags, only: [:index, :new, :create]
   end
 
   devise_for :users
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
       get 'mypage'
     end
   end
+
+  post 'guest_login', to: 'users#guest_login'
   
   get '/search', to: 'searches#search'
 

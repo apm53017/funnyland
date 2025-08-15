@@ -15,10 +15,14 @@
     <%= @post.opening_times %></li>
     <li>定休日：
     <%= @post.closed_day %></li>
-    <li>緯度：
-    <%= @post.latitude %></li>
-    <li>経度：
-    <%= @post.longitude %></li>
+    <li>タグ：
+      <% @post.tags.each do |tag| %>
+        <%= link_to tag.tag_name, search_path(tag_id: tag.id), class: "badge badge-secondary" %>
+      <% end %>
+    </li>
+    <li>
+      <div id="map" data-latitude=<%= @post.latitude %> data-longitude=<%= @post.longitude %>></div>
+    </li>
   </ul>
   <% if @post.user == current_user %>
     <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-success" %>
@@ -29,6 +33,6 @@
 
 </div>
 
-
-<br>
 <%= link_to "Back", posts_path %>
+
+<%= javascript_pack_tag 'map', 'data-turbolinks-track': 'reload' %>

@@ -1,0 +1,20 @@
+<h1>Tags</h1>
+
+<h4><%= link_to "New Tag", new_admin_tag_path %></h4>
+
+<table>
+  <thead>
+    <th>タグ名</th>
+    <th>アイコン</th>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.tag_name %></td>
+        <td><%= tag.icon %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= link_to "Back", admin_root_path %>

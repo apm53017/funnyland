@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy, :mypage]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def index
     @users = User.all
@@ -42,6 +43,12 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect_to new_user_registration_path
+  end
+
+  def guest_login
+    @user = User.guest
+    sign_in(@user)
+    redirect_to root_path
   end
 
   private
