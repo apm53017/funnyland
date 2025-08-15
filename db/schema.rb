@@ -71,8 +71,6 @@ ActiveRecord::Schema.define(version: 2025_08_11_040118) do
     t.float "longitude", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "tag_id"
-    t.integer "#<ActiveRecord::ConnectionAdapters::SQLite3::TableDefinition:0x00007f27391c2408>"
   end
 
   create_table "reviews", force: :cascade do |t|

@@ -10,7 +10,6 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :closed_day,       null: false
       t.float :latitude,          null: false, default: 0
       t.float :longitude,         null: false, default: 0
-      t.integer :tag_id,
       t.timestamps
     end
   end
