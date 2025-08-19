@@ -1,20 +1,20 @@
-<table>
+<table class="table">
   <tbody>
     <% post.reviews.each do |review| %>
     <tr>
       <td width="20%">
         <%= link_to user_path(review.user) do %>
-          <%= image_tag review.user.get_profile_image(80,80) %><br>
+          <%= image_tag review.user.get_profile_image(50,50) %>
           <%= review.user.name %>
         <% end %>
       </td>
-      <td width="50%"><%= review.comment %></td>
-      <td>
+      <td width="25%">
         <div id="review_<%= review.id %>"></div>
       </td>
+      <td width="50%"><%= review.comment %></td>
       <td>
         <% if review.user == current_user %>
-          <%= link_to "Destroy", post_review_path(post, review), method: :delete, class: "btn btn-danger", data: { confirm: "本当に削除しますか" } %>
+          <%= link_to "Destroy", post_review_path(post, review), method: :delete, class: "btn btn-danger btn-sm", data: { confirm: "本当に削除しますか" } %>
         <% end %>
       </td>
     </tr>

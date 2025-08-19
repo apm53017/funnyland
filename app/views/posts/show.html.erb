@@ -1,37 +1,67 @@
-<h1>Post detail</h1>
+<h1><%= @post.title %></h1>
 
-<div>
-  <%= image_tag @post.get_post_image(150,150) %>
-  <ul>
-    <li>スポット名：
-    <%= @post.title %></li>
-    <li>詳細：
-    <%= @post.body %></li>
-    <li>住所：
-    <%= @post.address %></li>
-    <li>電話番号：
-    <%= @post.telephone_number %></li>
-    <li>営業時間：
-    <%= @post.opening_times %></li>
-    <li>定休日：
-    <%= @post.closed_day %></li>
-    <li>タグ：
-      <% @post.tags.each do |tag| %>
-        <%= link_to tag.tag_name, search_path(tag_id: tag.id), class: "badge badge-secondary" %>
-      <% end %>
-    </li>
-    <li>
-      <div id="map" data-latitude=<%= @post.latitude %> data-longitude=<%= @post.longitude %>></div>
-    </li>
-  </ul>
-  <% if @post.user == current_user %>
+<table class="table table-striped">
+  <tbody>
+    <tr>
+      <%= image_tag @post.get_post_image(150,150), class: "d-block mx-auto" %>
+    </tr>
+    <tr>
+      <th width="30%", class="text-center">スポット名</th>
+      <td width="70%"><%= @post.title %></td>
+    </tr>
+    <tr>
+      <th class="text-center">詳細</th>
+      <td><%= @post.body %></td>
+    </tr>
+    <tr>
+      <th class="text-center">住所</th>
+      <td><%= @post.address %></td>
+    </tr>
+    <tr>
+      <th class="text-center">電話番号</th>
+      <td><%= @post.telephone_number %></td>
+    </tr>
+    <tr>
+      <th class="text-center">営業時間</th>
+      <td><%= @post.opening_times %></td>
+    </tr>
+    <tr>
+      <th class="text-center">定休日</th>
+      <td><%= @post.closed_day %></td>
+    </tr>
+    <tr>
+      <th class="text-center">タグ</th>
+      <td>
+        <% @post.tags.each do |tag| %>
+          <%= link_to tag.tag_name, search_path(tag_id: tag.id), class: "badge badge-secondary" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th class="text-center">地図</th>
+      <td>
+        <div id="map" data-latitude=<%= @post.latitude %> data-longitude=<%= @post.longitude %>></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% if @post.user == current_user %>
+  <div class="d-flex flex-row-reverse">
     <%= link_to "Edit", edit_post_path(@post), class: "btn btn-outline-success" %>
-  <% end %>
+  </div>
+<% end %>
 
+<div class="container my-3">
+  <h6><strong>評価・クチコミ一覧</strong></h6>
   <%= render "reviews/index", post: @post %>
-  <%= render "reviews/form", post: @post, review: @review %>
-
 </div>
+
+<div class="container my-3">
+  <h6><strong>評価・クチコミを書く</strong></h6>
+  <%= render "reviews/form", post: @post, review: @review %>
+</div>
+
 
 <%= link_to "Back", posts_path %>
 

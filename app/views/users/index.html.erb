@@ -1,19 +1,19 @@
 <h1>Users</h1>
 
-<table>
-  <thead>
-    <th>image</th>
-    <th>name</th>
+<table class="table">
+  <thead class="text-center">
+    <th width="40%">image</th>
+    <th width="60%">name</th>
   </thead>
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td>
+        <td width="40%">
           <%= link_to user_path(user.id) do %>
             <%= image_tag user.get_profile_image(80,80) %>
           <% end %>
         </td>
-        <td>
+        <td width="60%">
           <%= link_to user_path(user.id) do %>
             <%= user.name %>
           <% end %>

@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def mypage
     @user = current_user
-    @posts = @user.posts
+    @posts = @user.posts.page(params[:page])
   end
 
   def destroy

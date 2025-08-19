@@ -3,26 +3,27 @@
 <%= render 'layouts/error_messages', resource: @post %>
 
 <%= form_with model: @post do |f| %>
-  <p>スポット名</p>
-  <%= f.text_field :title %>
-  <p>スポット詳細</p>
-  <%= f.text_area :body %>
-  <%= text_field_tag :zipcode, nil, class: "form-control", placeholder: "郵便番号" %>
-  <p>住所</p>
-  <%= f.text_area :address %>
-  <p>電話番号</p>
-  <%= f.text_field :telephone_number %>
-  <p>営業時間</p>
-  <%= f.text_area :opening_times %>
-  <p>定休日</p>
-  <%= f.text_area :closed_day %>
-  <p>画像</p>
-  <%= f.file_field :post_image, accept: "image/*" %>
+  <p>スポット名
+  <%= f.text_field :title, class: "form-control form-control-sm", placeholder: "スポット名を入力してください" %></p>
+  <p>スポット詳細
+  <%= f.text_area :body, class: "form-control form-control-sm", placeholder: "スポット詳細を入力してください" %></p>
+  <p>郵便番号
+  <%= text_field_tag :zipcode, nil, class: "form-control form-control-sm", placeholder: "郵便番号を入力してください" %></p>
+  <p>住所
+  <%= f.text_area :address, class: "form-control form-control-sm", placeholder: "住所を入力してください" %></p>
+  <p>電話番号
+  <%= f.text_field :telephone_number, class: "form-control form-control-sm", placeholder: "電話番号を入力してください" %></p>
+  <p>営業時間
+  <%= f.text_area :opening_times, class: "form-control form-control-sm", placeholder: "営業時間を入力してください" %></p>
+  <p>定休日
+  <%= f.text_area :closed_day, class: "form-control form-control-sm", placeholder: "定休日を入力してください" %></p>
+  <p>画像<br>
+  <%= f.file_field :post_image, accept: "image/*" %></p>
 
   <div class="mb-3">
     <p>タグを選択</p>
     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :tag_name do |b| %>
-      <%== b.label { b.check_box + " #{b.text}" } %><br>
+      <%= b.label { b.check_box + " #{b.text}" } %><br>
     <% end %>
   </div>
 

@@ -1,16 +1,19 @@
-<h1>Posts</h1>
+<div class="container">
+  <h1 class="d-flex justify-content-between align-items-center mb-5">
+    <a>Posts</a>
+    <%= link_to '新規投稿はここから', new_post_path, class: 'btn btn-outline-primary', data: {turbolinks: "false"} %>
+  </h1>
+</div>
 
-<%= link_to 'New Post', new_post_path, class: 'btn btn-primary', data: {turbolinks: "false"} %>
-
-<table>
-  <thead>
-    <th></th>
-    <th>投稿者</th>
-    <th></th>
-    <th>スポット名</th>
-    <th>スポット詳細</th>
+<table class="table">
+  <thead class="text-center">
+    <th style="width: 60px"></th>
+    <th style="width: 100px">投稿者</th>
+    <th style="width: 200px"></th>
+    <th style="width: 250px">スポット名</th>
+    <th style="width: 300px">スポット詳細</th>
   </thead>
-  <tbody>
+  <tbody class="text-center">
     <% @posts.each do |post| %>
       <tr>
         <td>
@@ -38,3 +41,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @posts %>
