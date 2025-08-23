@@ -1,21 +1,25 @@
-<h1>Mypage</h1>
+<h3><strong>マイページ</strong></h3>
 <br>
 <div>
-  <%= image_tag @user.get_profile_image(80,80) %>
-  <h3><%= @user.name %></h3>
+  <%= image_tag @user.get_profile_image(100,100) %>
+  <div class="container">
+    <h4 class="d-flex justify-content-between align-items-center mb-5">
+      <%= @user.name %>
+      <%= link_to edit_user_path(@user.id) do %>
+        <button type="button"  class="btn btn-outline-success">
+          <i class="fa-solid fa-user-gear"> 編集</i>
+        </button>
+      <% end %>
+    </h4>
+  </div>      
 </div>
-<%= link_to edit_user_path(@user.id) do %>
-  <button type="button"  class="btn btn-outline-success">
-    <i class="fa-solid fa-user-gear"> 編集</i>
-  </button>
-<% end %>
 
-<br>
-  <h3>Posts</h3>
-<table>
-  <thead>
-    <th></th>
-    <th>スポット名</th>
+
+<h5>投稿一覧</h5>
+<table class="table">
+  <thead class="text-center">
+    <th width="30%"></th>
+    <th width="70%">スポット名</th>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
@@ -34,3 +38,5 @@
     <% end %>
   </tbody>
 </table>
+
+<%= paginate @posts, class: "d-flex justify-content-center" %>

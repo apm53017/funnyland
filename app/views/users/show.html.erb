@@ -1,8 +1,7 @@
-<h1>User detail</h1>
+<h3><strong><%= @user.name %></strong></h3>
 
 <div>
-  <%= image_tag @user.get_profile_image(80,80) %>
-  <p><%= @user.name %></p>
+  <%= image_tag @user.get_profile_image(150,150), class: "d-block mx-auto" %>
   <br>
   <% if @user == current_user %>
     <%= link_to "Edit", edit_user_path(@user), class: "btn btn-outline-success" %>

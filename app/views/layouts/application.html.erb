@@ -6,6 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f9ea2f5791.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -13,23 +16,21 @@
 
   <body>
     <%= render 'layouts/navigation' %>
-    <div class="container">
+    <%= render 'layouts/flash_messages' %>
       <div class="row">
-        <div class="mx-auto col-11 col-sm-10 col-lg-9 col-xl-8">
-          <p id="notice"></p>
-          <%= render 'layouts/flash_messages' %>
-          <%= yield %>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">
+        <% if controller_name == "homes" %>
+          <div class="container-fluid">
+            <%= yield %>
           </div>
-        </div>
+        <% else %>
+          <div class="mx-auto col-11 col-sm-11 col-lg-8 col-xl-7">
+            <div class="container mb-5">
+              <p id="notice"></p>
+              <%= yield %>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.45/jquery.jpostal.min.js"></script>
   </body>
 </html>

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   
   def index
-    @users = User.all
+    @users = User.page(params[:page])
     @user = current_user
   end
 
