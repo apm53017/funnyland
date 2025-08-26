@@ -1,19 +1,21 @@
-<div class="top-image text-center">
-  <div class="top-text container-fluid">
-    <h1 class="mt-5"><strong>Funny Land</strong></h1>
+<%= content_for(:bg_top) do %>
+  <div class="top-image text-center">
+    <div class="top-text container-fluid">
+      <h1 class="mt-5"><strong>Funny Land</strong></h1>
 
-    <div>
-      <div class="top-nav mt-4">
-        <%= link_to "Posts", posts_path %>
-        <% if user_signed_in? %>
-          <%= link_to "Mypage", mypage_users_path %>
-          <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %>
-          <%= link_to "Log in", new_user_session_path %>
-          <%= link_to "Guset", guest_login_path, method: :post %>
-        <% end %>
+      <div>
+        <div class="top-nav mt-4">
+          <%= link_to "Posts", posts_path %>
+          <% if user_signed_in? %>
+            <%= link_to "Mypage", mypage_users_path %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path %>
+            <%= link_to "Log in", new_user_session_path %>
+            <%= link_to "Guset", guest_login_path, method: :post %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

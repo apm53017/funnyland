@@ -17,20 +17,13 @@
   <body>
     <%= render 'layouts/navigation' %>
     <%= render 'layouts/flash_messages' %>
-      <div class="row">
-        <% if controller_name == "homes" %>
-          <div class="container-fluid">
-            <%= yield %>
-          </div>
-        <% else %>
-          <div class="mx-auto col-11 col-sm-11 col-lg-8 col-xl-7">
-            <div class="container mb-5">
-              <p id="notice"></p>
-              <%= yield %>
-            </div>
-          </div>
-        <% end %>
+    <%= yield(:bg_top) %>
+    <div class="mx-auto col-11 col-sm-11 col-lg-8 col-xl-7">
+      <div class="container mb-5">
+        <p id="notice"></p>
+        <%= yield %>
       </div>
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery-jpostal-ja@2.14.45/jquery.jpostal.min.js"></script>
   </body>
 </html>
