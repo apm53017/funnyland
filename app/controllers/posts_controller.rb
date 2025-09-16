@@ -30,18 +30,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = current_user
     post = Post.find(params[:id])
-    unless post.user_id == current_user.id
-      redirect_to posts_path
-    end
   end
 
   def update
-    @post = Post.find(params[:id])
-    post = Post.find(params[:id])
-    unless post.id == current_user.id
-      redirect_to posts_path
-    end
-
     if @post.update(post_params)
       flash[:notice] = "更新が完了しました。"
       redirect_to post_path(@post.id)
@@ -51,8 +42,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    @post.destroy
     redirect_to posts_path
   end
 
